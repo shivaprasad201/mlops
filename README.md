@@ -14,6 +14,12 @@ This repository implements a complete **MLOps pipeline** for **binary image clas
 
 ---
 
+## CI/CD Architecture
+
+![CI/CD Architecture](images/architecture.png)
+
+---
+
 ## 1) Project Structure
 
 ```
