@@ -1,0 +1,13 @@
+torch==2.2.2
+torchvision==0.17.2
+fastapi==0.115.6
+uvicorn==0.32.1
+python-multipart==0.0.12
+pillow==10.4.0
+numpy==1.26.4
+scikit-learn==1.5.2
+matplotlib==3.9.3
+mlflow==2.18.0
+pydantic==2.10.3
+pytest==8.3.4
+requests==2.32.3

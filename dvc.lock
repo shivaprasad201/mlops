@@ -1,0 +1,54 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: PYTHONPATH=. venv/bin/python -m src.preprocess --raw_dir data/raw 
+      --processed_dir data/processed --seed 42
+    deps:
+    - path: src/preprocess.py
+      hash: md5
+      md5: cb3401b29fbe2126eec2e0d5cb30dc72
+      size: 581
+    - path: src/utils/preprocess.py
+      hash: md5
+      md5: 95c05dee0d84329f97b0039283c37d79
+      size: 2908
+    params:
+      params.yaml:
+        preprocess.seed: 42
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 4933c015a4bd1064803ab615fb27901e.dir
+      size: 548354385
+      nfiles: 24998
+  train:
+    cmd: PYTHONPATH=. venv/bin/python -m src.train --epochs 5 --batch_size 32 
+      --lr 0.001
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 4933c015a4bd1064803ab615fb27901e.dir
+      size: 548354385
+      nfiles: 24998
+    - path: src/model.py
+      hash: md5
+      md5: 1241ed24534a0ebe344e368641307acd
+      size: 958
+    - path: src/train.py
+      hash: md5
+      md5: 9182e963a8a48bd1f6e34f3daaa90d6c
+      size: 6803
+    - path: src/utils/metrics.py
+      hash: md5
+      md5: 78f03b423f1f19587a7064d0bcc36962
+      size: 577
+    params:
+      params.yaml:
+        train.batch_size: 32
+        train.epochs: 5
+        train.lr: 0.001
+    outs:
+    - path: models/model.pt
+      hash: md5
+      md5: 6db8e9d95a589867b34f98045dda55d3
+      size: 25789468

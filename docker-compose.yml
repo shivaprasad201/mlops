@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  catsdogs:
+    # Use the GHCR image in production; fall back to local build for dev
+    image: ${CATSDOGS_IMAGE:-catsdogs:latest}
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=models/model.pt
+      - DEVICE=cpu

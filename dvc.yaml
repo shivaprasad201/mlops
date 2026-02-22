@@ -1,0 +1,38 @@
+vars:
+  - params.yaml
+
+stages:
+  preprocess:
+    cmd: >-
+      PYTHONPATH=. venv/bin/python -m src.preprocess
+      --raw_dir data/raw
+      --processed_dir data/processed
+      --seed ${preprocess.seed}
+    deps:
+      - src/preprocess.py
+      - src/utils/preprocess.py
+      # data/raw is user-provided input — place raw Kaggle images there
+      # before running this stage. Not tracked by DVC to avoid storing
+      # large raw images in the cache.
+    params:
+      - preprocess.seed
+    outs:
+      - data/processed
+
+  train:
+    cmd: >-
+      PYTHONPATH=. venv/bin/python -m src.train
+      --epochs ${train.epochs}
+      --batch_size ${train.batch_size}
+      --lr ${train.lr}
+    deps:
+      - src/train.py
+      - src/model.py
+      - src/utils/metrics.py
+      - data/processed
+    params:
+      - train.epochs
+      - train.batch_size
+      - train.lr
+    outs:
+      - models/model.pt

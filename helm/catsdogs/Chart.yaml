@@ -1,0 +1,10 @@
+apiVersion: v2
+name: catsdogs
+description: Cats vs Dogs ML inference service (SimpleCNN / FastAPI)
+type: application
+
+# Chart version — bump when chart templates change
+version: 0.1.0
+
+# App version — CI overwrites this with the git short-SHA before packaging
+appVersion: "latest"

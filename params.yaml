@@ -1,0 +1,7 @@
+preprocess:
+  seed: 42
+
+train:
+  epochs: 10
+  batch_size: 32
+  lr: 0.001
