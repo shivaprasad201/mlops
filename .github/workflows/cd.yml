@@ -22,7 +22,7 @@ jobs:
 
   deploy:
     name: Helm Deploy → local k8s
-    runs-on: [self-hosted, mac-k8s]
+    runs-on: [self-hosted]
     needs: check-ci
     environment: production   
 
