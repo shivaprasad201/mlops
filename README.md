@@ -1,6 +1,6 @@
 # MLOPS Assignment 2 Group-96
 
-Demo- 
+Demo-2
 
 # Cats vs Dogs — End-to-End MLOps Pipeline
 
