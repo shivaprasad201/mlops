@@ -1,5 +1,7 @@
 # MLOPS Assignment 2 Group-96
 
+Demo- 
+
 # Cats vs Dogs — End-to-End MLOps Pipeline
 
 This repository implements a complete **MLOps pipeline** for **binary image classification (Cats vs Dogs)**:
