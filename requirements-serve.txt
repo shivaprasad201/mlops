@@ -1,0 +1,11 @@
+# Inference-only dependencies — used by the production Docker image.
+# Training deps (mlflow, scikit-learn, matplotlib), test deps (pytest, requests)
+# and torch/torchvision are intentionally excluded here;
+# torch + torchvision are installed CPU-only directly in the Dockerfile.
+
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12
+pillow==10.4.0
+numpy==1.26.4
+pydantic==2.10.3

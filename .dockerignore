@@ -1,0 +1,44 @@
+# Version control
+.git
+.gitignore
+.github
+
+# Python artefacts
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.mypy_cache
+
+# Virtual environment
+venv/
+
+# Data — never bake raw/processed data into the image
+data/
+
+# Development / CI requirements
+requirements.txt
+
+# Training artefacts that don't belong in the image
+mlruns/
+mlflow.db
+dvc.yaml
+dvc.lock
+params.yaml
+
+# Docs & scripts
+README.md
+DEVELOPER_RUN_GUIDE.md
+SCREEN_RECORDING_SCRIPT.md
+scripts/
+tests/
+conftest.py
+
+# Helm / k8s manifests
+helm/
+
+# Docker Compose (not needed inside image)
+docker-compose.yml
+Dockerfile
+.dockerignore
