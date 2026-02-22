@@ -33,7 +33,7 @@ def _best_device() -> str:
 
 def train(
     data_dir: str = DEFAULT_DATA_DIR,
-    epochs: int = 5,
+    epochs: int = 20,
     batch_size: int = 32,
     lr: float = 1e-3,
     device: str = _best_device()
