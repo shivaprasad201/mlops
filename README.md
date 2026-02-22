@@ -2,6 +2,8 @@
 
 # Youtube video link :[ https://youtu.be/OB6AaxD5Owk](https://youtu.be/OB6AaxD5Owk)
 
+# GitHub repo link : [https://github.com/shivaprasad201/mlops](https://github.com/shivaprasad201/mlops)
+
 # Cats vs Dogs — End-to-End MLOps Pipeline
 
 This repository implements a complete **MLOps pipeline** for **binary image classification (Cats vs Dogs)**:
