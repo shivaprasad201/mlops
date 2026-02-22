@@ -1,4 +1,6 @@
-# Cats vs Dogs — End-to-End MLOps Pipeline (Assignment 2)
+# MLOPS Assignment 2 Group-96
+
+# Cats vs Dogs — End-to-End MLOps Pipeline
 
 This repository implements a complete **MLOps pipeline** for **binary image classification (Cats vs Dogs)**:
 
@@ -130,12 +132,12 @@ Open `http://127.0.0.1:5000`
 
 Artifacts logged per run:
 
-| Item | Location |
-|---|---|
-| Hyperparameters | MLflow params |
-| Per-epoch metrics (loss, accuracy, F1 …) | MLflow metrics |
-| Best model weights | `models/model.pt` + MLflow artifact |
-| Full MLflow model | `mlflow_model/` artifact |
+| Item                                      | Location                              |
+| ----------------------------------------- | ------------------------------------- |
+| Hyperparameters                           | MLflow params                         |
+| Per-epoch metrics (loss, accuracy, F1 …) | MLflow metrics                        |
+| Best model weights                        | `models/model.pt` + MLflow artifact |
+| Full MLflow model                         | `mlflow_model/` artifact            |
 
 ---
 
@@ -182,17 +184,17 @@ curl -X POST http://localhost:8000/predict \
 PYTHONPATH=. pytest tests/ -v
 ```
 
-| File | Tests |
-|---|---|
-| `test_preprocess.py` | `preprocess_image_to_rgb_224`, `load_image_as_numpy_rgb_224` |
-| `test_inference_utils.py` | `preprocess_pil_to_tensor`, `model forward shape` |
+| File                        | Tests                                                            |
+| --------------------------- | ---------------------------------------------------------------- |
+| `test_preprocess.py`      | `preprocess_image_to_rgb_224`, `load_image_as_numpy_rgb_224` |
+| `test_inference_utils.py` | `preprocess_pil_to_tensor`, `model forward shape`            |
 
 ---
 
 ## 7) CI Pipeline (GitHub Actions — Self-Hosted Runner)
 
-**Workflow:** [.github/workflows/ci.yml](.github/workflows/ci.yml)  
-**Triggers:** every `push` to any branch; every `pull_request` targeting `main`  
+**Workflow:** [.github/workflows/ci.yml](.github/workflows/ci.yml)
+**Triggers:** every `push` to any branch; every `pull_request` targeting `main`
 **Runner label:** `[self-hosted, mac-k8s]`
 
 ### Jobs
@@ -218,12 +220,12 @@ build-and-push  (needs: test-and-train)
 
 ### Image tags produced
 
-| Tag | When |
-|---|---|
-| `sha-<7-char-sha>` | every push |
-| `latest` | push to `main` |
-| `<branch-name>` | push to any branch |
-| `pr-<number>` | pull request |
+| Tag                  | When               |
+| -------------------- | ------------------ |
+| `sha-<7-char-sha>` | every push         |
+| `latest`           | push to `main`   |
+| `<branch-name>`    | push to any branch |
+| `pr-<number>`      | pull request       |
 
 ### Registry
 
@@ -239,8 +241,8 @@ Authentication uses the automatic `GITHUB_TOKEN` — no extra secrets needed.
 
 ## 8) CD Pipeline (GitHub Actions — Self-Hosted Runner)
 
-**Workflow:** [.github/workflows/cd.yml](.github/workflows/cd.yml)  
-**Trigger:** CI workflow completes successfully on `main`  
+**Workflow:** [.github/workflows/cd.yml](.github/workflows/cd.yml)
+**Trigger:** CI workflow completes successfully on `main`
 **Runner label:** `[self-hosted, mac-k8s]`
 
 ```
