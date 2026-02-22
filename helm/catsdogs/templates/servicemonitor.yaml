@@ -1,0 +1,21 @@
+{{- if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "catsdogs.fullname" . }}
+  labels:
+    {{- include "catsdogs.labels" . | nindent 4 }}
+    # Must match the Prometheus operator's serviceMonitorSelector in your
+    # kube-prometheus-stack / prometheus values.  The community chart default
+    # is release: prometheus, so we include it here.
+    release: {{ .Values.serviceMonitor.prometheusRelease | default "prometheus" }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "catsdogs.selectorLabels" . | nindent 6 }}
+  endpoints:
+    - port: http
+      path: /metrics
+      interval: {{ .Values.serviceMonitor.interval | default "30s" }}
+      scrapeTimeout: {{ .Values.serviceMonitor.scrapeTimeout | default "10s" }}
+{{- end }}

@@ -2,12 +2,11 @@ replicaCount: 1
 
 image:
   repository: ghcr.io/YOUR_GITHUB_USER/catsdogs
-  # CI sets this to sha-<short> at deploy time; override for pinned deploys
   tag: latest
   pullPolicy: Always
 
 imagePullSecrets:
-  - name: ghcr-secret   # see README for how to create this secret
+  - name: ghcr-secret   
 
 service:
   type: ClusterIP
@@ -40,13 +39,11 @@ livenessProbe:
   periodSeconds: 30
 
 # ── Prometheus ServiceMonitor ────────────────────────────────────────────────
-# Requires the Prometheus operator (kube-prometheus-stack or prometheus-community/prometheus)
-# to be installed in the cluster.
+# Only needed if you have the Prometheus operator installed.
+# With plain prometheus-community/prometheus, leave this false — scraping is
+# handled automatically via pod annotations (prometheus.io/scrape=true).
 serviceMonitor:
-  enabled: true
-  # Must match the serviceMonitorSelector label on your Prometheus CR.
-  # kube-prometheus-stack default: prometheus-kube-prometheus-prometheus
-  # plain prometheus chart default: prometheus
+  enabled: false
   prometheusRelease: prometheus
   interval: 30s
   scrapeTimeout: 10s

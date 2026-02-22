@@ -16,6 +16,10 @@ spec:
       annotations:
         # Force pod restart on every Helm upgrade even if values haven't changed
         rollme: {{ randAlphaNum 5 | quote }}
+        # Prometheus pod auto-discovery (picked up by the kubernetes-pods scrape job)
+        prometheus.io/scrape: "true"
+        prometheus.io/port:   "{{ .Values.service.port }}"
+        prometheus.io/path:   "/metrics"
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
