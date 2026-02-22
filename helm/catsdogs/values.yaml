@@ -38,3 +38,15 @@ livenessProbe:
     port: 8000
   initialDelaySeconds: 15
   periodSeconds: 30
+
+# ── Prometheus ServiceMonitor ────────────────────────────────────────────────
+# Requires the Prometheus operator (kube-prometheus-stack or prometheus-community/prometheus)
+# to be installed in the cluster.
+serviceMonitor:
+  enabled: true
+  # Must match the serviceMonitorSelector label on your Prometheus CR.
+  # kube-prometheus-stack default: prometheus-kube-prometheus-prometheus
+  # plain prometheus chart default: prometheus
+  prometheusRelease: prometheus
+  interval: 30s
+  scrapeTimeout: 10s
